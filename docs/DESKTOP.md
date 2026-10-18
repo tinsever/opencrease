@@ -16,7 +16,7 @@ Development bundles the main process, sandboxed preload and CLI with esbuild, an
 OPENCREASE_PORT=29908 OPENCREASE_VITE_PORT=5208 pnpm --filter @opencrease/desktop dev /tmp/of-desktop/ws
 ```
 
-`build` produces installers in `apps/desktop/release` for the current platform: macOS DMG and ZIP, Windows NSIS, Linux AppImage, deb and rpm. `pnpm --filter @opencrease/desktop pack` produces an unpacked app. Run platform builds on their respective operating systems. Flatpak, Windows signing, macOS signing and notarization remain release follow-ups. The macOS build explicitly uses `identity: null` for unsigned local builds; a signed release must override that setting, configure hardened runtime and entitlements, and supply signing/notarization credentials to electron-builder. Unsigned downloads may require the operating system's manual approval to open.
+`build` produces installers in `apps/desktop/release` for the current platform: macOS DMG and ZIP, Windows NSIS, Linux AppImage, deb and rpm. `pnpm --filter @opencrease/desktop pack` produces an unpacked app. Run platform builds on their respective operating systems. Flatpak, Windows signing, macOS signing and notarization remain release follow-ups. The macOS build uses `identity: "-"` (ad-hoc signing) with `hardenedRuntime: false`, so the bundle signature is valid but not tied to a developer. A Developer ID release must replace the identity, turn hardened runtime back on with entitlements, and supply signing/notarization credentials to electron-builder. Ad-hoc signed downloads need a one-time approval in System Settings → Privacy & Security → Open Anyway.
 
 ## Native features
 

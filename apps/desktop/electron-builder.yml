@@ -34,8 +34,10 @@ mac:
   target: [dmg, zip]
   artifactName: OpenCrease-${version}-${arch}-mac.${ext}
   icon: build/icon.png
-  # Unsigned by default. Signing and notarization are documented in docs/DESKTOP.md.
-  identity: null
+  # Ad-hoc signed by default (no Apple Developer ID). Signing and notarization are documented in docs/DESKTOP.md.
+  identity: "-"
+  # Hardened runtime matters only for notarized Developer ID builds; with ad-hoc signing it breaks library validation.
+  hardenedRuntime: false
   darkModeSupport: true
   extendInfo:
     NSHumanReadableCopyright: Copyright OpenCrease contributors

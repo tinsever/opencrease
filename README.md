@@ -4,6 +4,16 @@ A free, local-first design tool where the canvas is real HTML and CSS. Draw edit
 
 OpenCrease is an independent, clean-room project inspired by [Paper](https://paper.design), with compatible MCP tool names and shapes. Early v0.1: single user, files on your disk, no account.
 
+![The OpenCrease editor with a desktop and mobile design on the canvas](docs/screenshots/editor.png)
+
+| Design panel | Code export |
+| --- | --- |
+| ![A selected section with its layout, flex and token-backed spacing in the design panel](docs/screenshots/selected.png) | ![The same section exported as React with Tailwind classes](docs/screenshots/code.png) |
+
+## Download
+
+Get the macOS app (Apple Silicon or Intel) from [Releases](https://github.com/tinsever/opencrease/releases). Builds aren't notarized yet: the first time you open the app, macOS blocks it. Go to System Settings → Privacy & Security and click Open Anyway. On other platforms, run from source as described below.
+
 ## Quick start
 
 Requirements: Node 22 or newer and pnpm 10.
