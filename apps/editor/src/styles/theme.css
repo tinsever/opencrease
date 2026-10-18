@@ -1,0 +1,90 @@
+/* Editor chrome design tokens.
+   Prefixed with --of- so they never collide with tokens inside user documents. */
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
+
+:root {
+  --of-panel: #FFFFFF;
+  --of-chrome: #F4F4F2;
+  --of-canvas: #E3E3E0;
+  --of-hairline: #E6E6E3;
+  --of-line-strong: #D2D2CE;
+  --of-muted: #6D6D69;
+  --of-ink-2: #45453F;
+  --of-ink: #141414;
+  --of-accent: #FF5B14;
+  --of-accent-ink: #B83E06;
+  --of-accent-soft: #FFEADF;
+  --of-agent: #2D60CC;
+  --of-agent-badge: #2F64D6;
+  --of-measure: #B84210;
+  --of-agent-soft: #E3EBFB;
+  --of-claude: #D97757;
+  --of-success: #1C8046;
+  --of-danger: #D3341C;
+  --of-component: #6A3FC4;
+  --of-component-soft: #EEE8FA;
+  --of-component-badge-ink: #FFFFFF;
+  --of-selection-badge-ink: #FFFFFF;
+  --of-font-sans: "Geist Variable", Geist, system-ui, sans-serif;
+  --of-font-mono: "Geist Mono Variable", "Geist Mono", ui-monospace, monospace;
+  --of-text-xs: 11px;
+  --of-text-sm: 12px;
+  --of-text-md: 13px;
+  --of-text-lg: 15px;
+  --of-text-xl: 20px;
+  --of-text-2xl: 28px;
+  --of-radius-sm: 4px;
+  --of-radius-md: 6px;
+  --of-radius-lg: 10px;
+  --of-left-panel: 248px;
+  --of-right-panel: 264px;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { margin: 0; height: 100%; }
+body {
+  font-family: var(--of-font-sans);
+  font-size: var(--of-text-sm);
+  color: var(--of-ink);
+  background: var(--of-chrome);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --of-panel: #232321;
+  --of-chrome: #1B1B19;
+  --of-canvas: #141412;
+  --of-hairline: #363632;
+  --of-line-strong: #51514A;
+  --of-muted: #A2A29A;
+  --of-ink-2: #CDCDC5;
+  --of-ink: #F1F1EA;
+  --of-accent: #FF7A3E;
+  --of-accent-ink: #FF9D70;
+  --of-accent-soft: #4B2D20;
+  --of-agent: #8CAEFF;
+  --of-agent-badge: #335CB1;
+  --of-measure: #FF9D70;
+  --of-agent-soft: #273550;
+  --of-success: #75CB97;
+  --of-danger: #FF8B79;
+  --of-component: #BB9AF5;
+  --of-component-soft: #382C4D;
+  --of-component-badge-ink: #26183C;
+  --of-selection-badge-ink: #321B0C;
+}
+:root[data-theme="light"] { color-scheme: light; }
+:root { --of-on-ink: #FFFFFF; --of-code-bg: #141414; }
+:root[data-theme="dark"] { --of-on-ink: #191917; --of-code-bg: #141414; }
+
+/* UI motion never changes document animations. */
+@media (prefers-reduced-motion: reduce) {
+  :root { scroll-behavior: auto; }
+  .of-toggle::after, .of-agent-outline, .of-agent-live, .of-step, .of-spinner { animation: none !important; transition: none !important; }
+}
+:root[data-agent-motion="reduced"] .of-agent-outline,
+:root[data-agent-motion="reduced"] .of-agent-live,
+:root[data-agent-motion="reduced"] .of-step { animation: none !important; transition: none !important; }

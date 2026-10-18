@@ -1,0 +1,197 @@
+{
+  "assets": {},
+  "clientId": "fixture",
+  "clock": 9,
+  "createdAt": 0,
+  "formatVersion": 1,
+  "id": "fixture-vector",
+  "name": "vector",
+  "nodes": {
+    "2-fixture": {
+      "children": [
+        "3-fixture",
+        "7-fixture"
+      ],
+      "exports": [
+        {
+          "format": "png",
+          "scale": "2x"
+        }
+      ],
+      "id": "2-fixture",
+      "locked": false,
+      "name": "Vector",
+      "parentId": "root_p-1-fixture",
+      "styles": {
+        "alignItems": "center",
+        "backgroundColor": "#eef2ff",
+        "display": "flex",
+        "gap": "24px",
+        "height": "260px",
+        "justifyContent": "center",
+        "left": 0,
+        "overflow": "hidden",
+        "padding": "24px",
+        "position": "absolute",
+        "top": 0,
+        "width": "400px"
+      },
+      "type": "Frame",
+      "visible": true
+    },
+    "3-fixture": {
+      "attrs": {
+        "height": "150",
+        "viewBox": "0 0 100 100",
+        "width": "150"
+      },
+      "children": [
+        "4-fixture",
+        "5-fixture",
+        "6-fixture"
+      ],
+      "id": "3-fixture",
+      "locked": false,
+      "name": "Mark",
+      "parentId": "2-fixture",
+      "styles": {
+        "height": 150,
+        "width": 150
+      },
+      "tag": "svg",
+      "type": "SVG",
+      "visible": true
+    },
+    "4-fixture": {
+      "attrs": {
+        "fill": "#30256f",
+        "height": "90",
+        "rx": "24",
+        "width": "90",
+        "x": "5",
+        "y": "5"
+      },
+      "children": [],
+      "id": "4-fixture",
+      "locked": false,
+      "name": "Rect",
+      "parentId": "3-fixture",
+      "styles": {},
+      "tag": "rect",
+      "type": "SVGElement",
+      "visible": true
+    },
+    "5-fixture": {
+      "attrs": {
+        "cx": "50",
+        "cy": "50",
+        "fill": "#ffb96b",
+        "r": "28"
+      },
+      "children": [],
+      "id": "5-fixture",
+      "locked": false,
+      "name": "Circle",
+      "parentId": "3-fixture",
+      "styles": {},
+      "tag": "circle",
+      "type": "SVGElement",
+      "visible": true
+    },
+    "6-fixture": {
+      "attrs": {
+        "d": "M35 50 L46 62 L68 38",
+        "fill": "none",
+        "stroke": "#30256f",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round",
+        "stroke-width": "7"
+      },
+      "children": [],
+      "id": "6-fixture",
+      "locked": false,
+      "name": "Path",
+      "parentId": "3-fixture",
+      "styles": {},
+      "tag": "path",
+      "type": "SVGElement",
+      "visible": true
+    },
+    "7-fixture": {
+      "children": [
+        "8-fixture",
+        "9-fixture"
+      ],
+      "id": "7-fixture",
+      "locked": false,
+      "name": "Frame",
+      "parentId": "2-fixture",
+      "styles": {
+        "display": "flex",
+        "flexDirection": "column",
+        "gap": "12px"
+      },
+      "type": "Frame",
+      "visible": true
+    },
+    "8-fixture": {
+      "children": [],
+      "id": "8-fixture",
+      "locked": false,
+      "name": "Rectangle",
+      "parentId": "7-fixture",
+      "styles": {
+        "backgroundImage": "linear-gradient(90deg,#30256f,#8c9eff)",
+        "borderRadius": "12px",
+        "height": "60px",
+        "width": "100px"
+      },
+      "type": "Rectangle",
+      "visible": true
+    },
+    "9-fixture": {
+      "children": [],
+      "id": "9-fixture",
+      "locked": false,
+      "name": "Vector detail",
+      "parentId": "7-fixture",
+      "styles": {
+        "color": "#30256f",
+        "fontFamily": "Geist Variable",
+        "fontSize": "16px",
+        "fontWeight": 600
+      },
+      "text": "Vector detail",
+      "type": "Text",
+      "visible": true
+    },
+    "root_p-1-fixture": {
+      "children": [
+        "2-fixture"
+      ],
+      "id": "root_p-1-fixture",
+      "locked": false,
+      "name": "Root",
+      "parentId": null,
+      "styles": {},
+      "type": "Root",
+      "visible": true
+    }
+  },
+  "pageList": [
+    {
+      "id": "p-1-fixture",
+      "type": "page"
+    }
+  ],
+  "pages": {
+    "p-1-fixture": {
+      "icon": null,
+      "id": "p-1-fixture",
+      "name": "Page 1",
+      "rootId": "root_p-1-fixture"
+    }
+  },
+  "tokens": [],
+  "updatedAt": 0
+}

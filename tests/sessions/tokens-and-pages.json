@@ -1,0 +1,139 @@
+{
+  "name": "tokens-and-pages",
+  "prompt": "Create a token-driven desktop screen and a mobile page, then rename the shared colour token.",
+  "calls": [
+    {
+      "tool": "create_tokens",
+      "args": {
+        "tokens": [
+          {
+            "type": "color",
+            "name": "--color-brand",
+            "value": "#ff5b14"
+          },
+          {
+            "type": "color",
+            "name": "--color-link",
+            "value": "var(--color-brand)"
+          }
+        ]
+      }
+    },
+    {
+      "tool": "create_artboard",
+      "args": {
+        "name": "Desktop",
+        "styles": {
+          "width": 800,
+          "height": 600,
+          "backgroundColor": "var(--color-brand)"
+        }
+      },
+      "bind": {
+        "board": "id"
+      }
+    },
+    {
+      "tool": "create_page",
+      "args": {
+        "name": "Mobile"
+      },
+      "bind": {
+        "mobile": "pageId"
+      }
+    },
+    {
+      "tool": "create_artboard",
+      "args": {
+        "name": "Phone",
+        "pageId": "$mobile",
+        "styles": {
+          "width": 390,
+          "height": 844,
+          "backgroundColor": "var(--color-link)"
+        }
+      }
+    },
+    {
+      "tool": "set_tokens",
+      "args": {
+        "updates": [
+          {
+            "name": "--color-brand",
+            "newName": "--color-accent",
+            "value": "#ea5217"
+          }
+        ]
+      }
+    },
+    {
+      "tool": "update_pages",
+      "args": {
+        "updates": [
+          {
+            "pageId": "$mobile",
+            "name": "Phone designs"
+          }
+        ]
+      }
+    }
+  ],
+  "expected": {
+    "pages": [
+      {
+        "name": "Page 1",
+        "children": [
+          {
+            "type": "Frame",
+            "name": "Desktop",
+            "styles": {
+              "backgroundColor": "var(--color-accent)",
+              "display": "flex",
+              "flexDirection": "column",
+              "height": 600,
+              "left": 0,
+              "overflow": "clip",
+              "position": "absolute",
+              "top": 0,
+              "width": 800
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "Phone designs",
+        "children": [
+          {
+            "type": "Frame",
+            "name": "Phone",
+            "styles": {
+              "backgroundColor": "var(--color-link)",
+              "display": "flex",
+              "flexDirection": "column",
+              "height": 844,
+              "left": 0,
+              "overflow": "clip",
+              "position": "absolute",
+              "top": 0,
+              "width": 390
+            },
+            "children": []
+          }
+        ]
+      }
+    ],
+    "tokens": [
+      {
+        "name": "--color-accent",
+        "type": "color",
+        "value": "#ea5217"
+      },
+      {
+        "name": "--color-link",
+        "type": "color",
+        "value": "var(--color-accent)"
+      }
+    ]
+  }
+}

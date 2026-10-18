@@ -1,0 +1,19 @@
+/* Desktop app window chrome. The title bar doubles as the window's drag area; on macOS it leaves room
+   for the traffic lights (hidden in full screen). Set by installDesktop() from the preload bridge. */
+html[data-of-desktop] .of-titlebar {
+  -webkit-app-region: drag;
+}
+html[data-of-desktop] .of-titlebar button,
+html[data-of-desktop] .of-titlebar [role="tab"],
+html[data-of-desktop] .of-titlebar [role="status"],
+html[data-of-desktop] .of-titlebar input,
+html[data-of-desktop] .of-file-path,
+html[data-of-desktop] .of-save-state {
+  -webkit-app-region: no-drag;
+}
+html[data-of-desktop="darwin"] .of-titlebar {
+  padding-left: 80px;
+}
+html[data-of-desktop="darwin"][data-of-fullscreen] .of-titlebar {
+  padding-left: 12px;
+}

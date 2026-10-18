@@ -1,0 +1,67 @@
+# electron-builder config for the OpenCrease desktop app. Build with `pnpm --filter @opencrease/desktop build`.
+# The main process, preload and CLI are bundled by scripts/bundle.mjs, so no node_modules are packaged.
+appId: dev.opencrease.desktop
+productName: OpenCrease
+copyright: Copyright OpenCrease contributors
+directories:
+  output: release
+  buildResources: build
+files:
+  - package.json
+  - dist/main.cjs
+  - dist/preload.cjs
+asar: true
+extraResources:
+  - from: ../editor/dist
+    to: editor
+    filter: ["**/*", "!**/*.map"]
+  - from: ../server/guides
+    to: guides
+  - from: dist/opencrease-cli.mjs
+    to: cli/opencrease-cli.mjs
+  - from: ../../LICENSE
+    to: LICENSE
+  - from: ../../THIRD_PARTY_NOTICES
+    to: THIRD_PARTY_NOTICES
+protocols:
+  - name: OpenCrease link
+    schemes: [opencrease]
+# Updates use a generic feed configured at runtime (OPENCREASE_UPDATE_URL or settings.json), see src/updater.ts.
+publish: null
+
+mac:
+  category: public.app-category.graphics-design
+  target: [dmg, zip]
+  artifactName: OpenCrease-${version}-${arch}-mac.${ext}
+  icon: build/icon.png
+  # Unsigned by default. Signing and notarization are documented in docs/DESKTOP.md.
+  identity: null
+  darkModeSupport: true
+  extendInfo:
+    NSHumanReadableCopyright: Copyright OpenCrease contributors
+dmg:
+  title: OpenCrease
+  artifactName: OpenCrease-${version}-${arch}.dmg
+
+win:
+  target: [nsis]
+  icon: build/icon.png
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  artifactName: OpenCrease-Setup-${version}.exe
+
+linux:
+  target: [AppImage, deb, rpm]
+  icon: build/icon.png
+  category: Graphics
+  synopsis: Local-first design tool with a real HTML/CSS canvas
+  maintainer: OpenCrease contributors
+  mimeTypes: [x-scheme-handler/opencrease]
+appImage:
+  artifactName: OpenCrease-${version}-${arch}.AppImage
+deb:
+  artifactName: opencrease_${version}_${arch}.deb
+rpm:
+  artifactName: opencrease-${version}.${arch}.rpm

@@ -1,0 +1,144 @@
+{
+  "name": "restructure-layers",
+  "prompt": "Make two groups, move an item between them, replace a layer, and delete a duplicate.",
+  "calls": [
+    {
+      "tool": "create_artboard",
+      "args": {
+        "name": "Groups",
+        "styles": {
+          "width": 600,
+          "height": 400
+        }
+      },
+      "bind": {
+        "board": "id"
+      }
+    },
+    {
+      "tool": "write_html",
+      "args": {
+        "targetNodeId": "$board",
+        "mode": "insert-children",
+        "html": "<div layer-name=\"Left\" style=\"display:flex;gap:8px\"><div>A</div><div>B</div></div><div layer-name=\"Right\" style=\"display:flex\"></div>"
+      },
+      "bind": {
+        "left": "createdNodes.0.id",
+        "right": "createdNodes.1.id"
+      }
+    },
+    {
+      "tool": "get_children",
+      "args": {
+        "nodeId": "$left"
+      },
+      "bind": {
+        "a": "children.0.id",
+        "b": "children.1.id"
+      }
+    },
+    {
+      "tool": "move_nodes",
+      "args": {
+        "moves": [
+          {
+            "nodeId": "$b",
+            "parentId": "$right",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "tool": "write_html",
+      "args": {
+        "targetNodeId": "$a",
+        "mode": "replace",
+        "html": "<div layer-name=\"Replacement\" style=\"color:#2255aa\">Revised</div>"
+      }
+    },
+    {
+      "tool": "duplicate_nodes",
+      "args": {
+        "nodes": [
+          {
+            "id": "$left"
+          }
+        ]
+      },
+      "bind": {
+        "copy": "duplicatedNodes.0.id"
+      }
+    },
+    {
+      "tool": "delete_nodes",
+      "args": {
+        "nodeIds": [
+          "$copy"
+        ]
+      }
+    }
+  ],
+  "expected": {
+    "pages": [
+      {
+        "name": "Page 1",
+        "children": [
+          {
+            "type": "Frame",
+            "name": "Groups",
+            "styles": {
+              "backgroundColor": "#FFFFFF",
+              "display": "flex",
+              "flexDirection": "column",
+              "height": 400,
+              "left": 0,
+              "overflow": "clip",
+              "position": "absolute",
+              "top": 0,
+              "width": 600
+            },
+            "children": [
+              {
+                "type": "Frame",
+                "name": "Left",
+                "styles": {
+                  "display": "flex",
+                  "gap": "8px"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "name": "Replacement",
+                    "styles": {
+                      "color": "#2255aa"
+                    },
+                    "text": "Revised",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "type": "Frame",
+                "name": "Right",
+                "styles": {
+                  "display": "flex"
+                },
+                "children": [
+                  {
+                    "type": "Text",
+                    "name": "B",
+                    "styles": {},
+                    "text": "B",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "tokens": []
+  }
+}

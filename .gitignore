@@ -1,0 +1,18 @@
+node_modules
+dist
+.DS_Store
+*.log
+.vite
+coverage
+test-results
+playwright-report
+
+# design files written into the repo by a misconfigured workspace
+/*.fold/
+/Exports/
+
+# agent worktrees
+/.claude/
+
+# desktop packaging output
+release

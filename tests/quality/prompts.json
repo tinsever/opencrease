@@ -1,0 +1,6 @@
+[
+  { "id": "landing", "prompt": "Design a 1440 by 1000 landing page for Tide Table, a coastal field notebook. Include navigation, a strong product story, a notebook photograph, three useful features and a purchase action. Use realistic copy. Read the craft guide, post your brief, create tokens, build in small steps and review screenshots." },
+  { "id": "dashboard", "prompt": "Design a 1440 by 1000 operations dashboard for a small regional railway. Show service health, punctuality, a departures table with eight realistic rows and an incident detail panel. Prioritise legibility and alignment. Read the craft guide, post your brief, create tokens, build in small steps and review screenshots." },
+  { "id": "mobile", "prompt": "Design a 390 by 844 mobile app screen for a community seed library. Show this month's collection, available seed packets and one clear action to reserve a packet. Use realistic names and quantities. Read the craft guide, post your brief, create tokens, build in small steps and review screenshots." },
+  { "id": "poster", "prompt": "Design a 700 by 1000 typographic poster for Night Field, an outdoor astronomy evening on 24 October at 19:30 in West Park. Include the date, location, free entry and a short invitation. Read the craft guide, post your brief, create tokens, build in small steps and review screenshots." }
+]

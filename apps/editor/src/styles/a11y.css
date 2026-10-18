@@ -1,0 +1,19 @@
+/* Accessibility baseline for the editor chrome (SPEC §13): visible keyboard focus everywhere,
+   reduced motion, and a helper for text that only screen readers need. */
+
+:where(button, [role="button"], [role="tab"], [role="radio"], [role="menuitem"], [role="option"], a, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--of-accent);
+  outline-offset: 1px;
+}
+/* fields show focus on their wrapper already; keep a ring for bare inputs */
+:where(input, textarea, select):focus-visible { outline: 2px solid var(--of-accent); outline-offset: 1px; }
+:where(textarea.of-input, .of-guide-editor textarea):focus-visible { box-shadow: inset 0 0 0 2px var(--of-accent); }
+
+.of-sr-only {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}

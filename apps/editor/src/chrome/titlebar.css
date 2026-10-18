@@ -1,0 +1,186 @@
+.of-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 38px;
+  flex-shrink: 0;
+  padding: 0 12px 0 12px;
+  background: var(--of-chrome);
+  border-bottom: 1px solid var(--of-hairline);
+  font-size: var(--of-text-sm);
+  line-height: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.of-titlebar-home {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 26px;
+  flex-shrink: 0;
+  border-radius: var(--of-radius-md);
+  cursor: pointer;
+}
+.of-titlebar-home:hover,
+.of-titlebar-home[data-active] {
+  background: var(--of-hairline);
+}
+
+.of-filetabs {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 38px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.of-filetab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 30px;
+  min-width: 0;
+  max-width: 220px;
+  padding: 0 8px 0 12px;
+  border-radius: 8px 8px 0 0;
+  color: var(--of-muted);
+  cursor: default;
+}
+.of-filetab:hover:not([data-active]) {
+  color: var(--of-ink-2);
+  background: color-mix(in srgb, var(--of-panel) 45%, transparent);
+}
+.of-filetab[data-active] {
+  background: var(--of-panel);
+  color: var(--of-ink);
+  font-weight: 500;
+}
+.of-filetab-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.of-filetab-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.of-filetab-close {
+  all: unset;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  border-radius: var(--of-radius-sm);
+  color: var(--of-muted);
+  cursor: pointer;
+  visibility: hidden;
+}
+.of-filetab:hover .of-filetab-close,
+.of-filetab[data-active] .of-filetab-close,
+.of-filetab-close[data-dirty] {
+  visibility: visible;
+}
+.of-filetab-close svg {
+  display: block;
+}
+.of-filetab-close:hover {
+  background: var(--of-hairline);
+  color: var(--of-ink);
+}
+.of-filetab-close:focus-visible {
+  visibility: visible;
+  box-shadow: 0 0 0 1px var(--of-accent);
+}
+/* unsaved dot replaces the cross until hovered */
+.of-filetab-unsaved {
+  display: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--of-ink-2);
+}
+.of-filetab-close[data-dirty] .of-filetab-unsaved {
+  display: block;
+}
+.of-filetab-close[data-dirty] svg {
+  display: none;
+}
+.of-filetab-close[data-dirty]:hover .of-filetab-unsaved {
+  display: none;
+}
+.of-filetab-close[data-dirty]:hover svg {
+  display: block;
+}
+
+.of-filetab-new {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: var(--of-radius-md);
+  color: var(--of-muted);
+  cursor: pointer;
+}
+.of-filetab-new:hover {
+  color: var(--of-ink);
+  background: var(--of-hairline);
+}
+
+.of-titlebar-spacer {
+  flex: 1;
+}
+
+.of-titlebar-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex-shrink: 1;
+}
+.of-save-state {
+  font-size: var(--of-text-xs);
+  line-height: 14px;
+  color: var(--of-muted);
+  white-space: nowrap;
+}
+.of-save-state[data-state="error"] {
+  color: var(--of-danger);
+}
+.of-file-path {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--of-font-mono);
+  font-size: var(--of-text-xs);
+  line-height: 14px;
+  color: var(--of-muted);
+  max-width: 360px;
+}
+.of-bridge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  flex-shrink: 0;
+  background: var(--of-line-strong);
+}
+.of-bridge-dot[data-on] {
+  background: var(--of-success);
+}

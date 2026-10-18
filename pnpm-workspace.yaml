@@ -1,0 +1,10 @@
+packages:
+  - "packages/*"
+  - "apps/*"
+
+patchedDependencies:
+  webm-muxer@5.1.4: patches/webm-muxer@5.1.4.patch
+
+onlyBuiltDependencies:
+  - esbuild
+  - electron

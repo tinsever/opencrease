@@ -1,0 +1,28 @@
+{
+  "name": "@opencrease/desktop",
+  "productName": "OpenCrease",
+  "version": "0.1.0",
+  "private": true,
+  "description": "OpenCrease, a local-first design tool with a real HTML/CSS canvas",
+  "author": "OpenCrease",
+  "license": "AGPL-3.0-or-later",
+  "type": "module",
+  "main": "dist/main.cjs",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "bundle": "node scripts/bundle.mjs",
+    "build": "node scripts/build.mjs",
+    "pack": "node scripts/build.mjs --dir",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@opencrease/protocol": "workspace:*",
+    "electron": "44.9.0",
+    "electron-builder": "26.15.3",
+    "electron-updater": "6.8.9",
+    "esbuild": "0.28.2",
+    "jsonc-parser": "3.3.1",
+    "opencrease": "workspace:*",
+    "smol-toml": "^1.9.1"
+  }
+}

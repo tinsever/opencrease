@@ -1,0 +1,447 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://opencrease.dev/schema/document-v1.json",
+  "title": "OpenCrease document.json v1",
+  "type": "object",
+  "required": [
+    "formatVersion",
+    "id",
+    "name",
+    "createdAt",
+    "updatedAt",
+    "clock",
+    "clientId",
+    "pageList",
+    "pages",
+    "nodes",
+    "tokens",
+    "assets"
+  ],
+  "properties": {
+    "formatVersion": {
+      "const": 1
+    },
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "number"
+    },
+    "updatedAt": {
+      "type": "number"
+    },
+    "clock": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "clientId": {
+      "type": "string"
+    },
+    "pageList": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "page",
+              "divider"
+            ]
+          }
+        }
+      }
+    },
+    "pages": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "icon",
+          "rootId"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "icon": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "rootId": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "nodes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "name",
+          "parentId",
+          "children",
+          "visible",
+          "locked",
+          "styles"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "Root",
+              "Frame",
+              "Rectangle",
+              "Text",
+              "Image",
+              "SVG",
+              "SVGElement",
+              "Shader"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "parentId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "visible": {
+            "type": "boolean"
+          },
+          "locked": {
+            "type": "boolean"
+          },
+          "styles": {
+            "type": "object",
+            "additionalProperties": {
+              "type": [
+                "string",
+                "number"
+              ]
+            }
+          },
+          "text": {
+            "type": "string"
+          },
+          "src": {
+            "type": "string"
+          },
+          "tag": {
+            "type": "string"
+          },
+          "attrs": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "shader": {
+            "type": "object",
+            "required": [
+              "name",
+              "params"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "params": {
+                "type": "object"
+              }
+            }
+          },
+          "exports": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "format",
+                "scale"
+              ],
+              "properties": {
+                "format": {
+                  "enum": [
+                    "png",
+                    "jpg",
+                    "webp",
+                    "avif",
+                    "svg",
+                    "pdf",
+                    "mp4",
+                    "webm"
+                  ]
+                },
+                "scale": {
+                  "type": "string"
+                },
+                "suffix": {
+                  "type": "string"
+                },
+                "durationSeconds": {
+                  "type": "number",
+                  "minimum": 1,
+                  "maximum": 300
+                },
+                "fps": {
+                  "enum": [
+                    24,
+                    30,
+                    60
+                  ]
+                },
+                "pdfQuality": {
+                  "enum": [
+                    "low",
+                    "medium",
+                    "high"
+                  ]
+                },
+                "pdfResampling": {
+                  "enum": [
+                    "detailed",
+                    "basic"
+                  ]
+                }
+              }
+            }
+          },
+          "paint": {
+            "type": "object",
+            "properties": {
+              "shader": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "params"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "params": {
+                    "type": "object"
+                  }
+                }
+              },
+              "shaderHidden": {
+                "type": "boolean"
+              },
+              "hiddenFills": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "index",
+                    "css"
+                  ],
+                  "properties": {
+                    "index": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "css": {
+                      "type": "string"
+                    },
+                    "size": {
+                      "type": "string"
+                    },
+                    "position": {
+                      "type": "string"
+                    },
+                    "repeat": {
+                      "type": "string"
+                    },
+                    "blend": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "constraints": {
+            "type": "object",
+            "required": [
+              "horizontal",
+              "vertical"
+            ],
+            "properties": {
+              "horizontal": {
+                "enum": [
+                  "left",
+                  "right",
+                  "center",
+                  "scale",
+                  "stretch"
+                ]
+              },
+              "vertical": {
+                "enum": [
+                  "top",
+                  "bottom",
+                  "center",
+                  "scale",
+                  "stretch"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "tokens": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "name",
+          "value"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "color",
+              "spacing",
+              "radius",
+              "fontFamily",
+              "fontWeight",
+              "fontSize",
+              "lineHeight",
+              "letterSpacing",
+              "opacity",
+              "container",
+              "breakpoint"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "pattern": "^--"
+          },
+          "value": {
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "assets": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "hash",
+          "mime",
+          "size"
+        ],
+        "properties": {
+          "hash": {
+            "type": "string"
+          },
+          "mime": {
+            "type": "string"
+          },
+          "size": {
+            "type": "number",
+            "minimum": 0
+          },
+          "name": {
+            "type": "string"
+          },
+          "width": {
+            "type": "number"
+          },
+          "height": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "briefs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "artboardId",
+          "mood",
+          "palette",
+          "type",
+          "direction",
+          "createdAt"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "artboardId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "mood": {
+            "type": "string"
+          },
+          "palette": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "direction": {
+            "type": "string"
+          },
+          "subject": {
+            "type": "string"
+          },
+          "author": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+/* AI dialogs: generate dialog and the AI providers settings page. */
+.of-ai-form { display: flex; flex-direction: column; gap: 10px; padding: 16px 24px 20px; }
+.of-ai-prompt {
+  all: unset; box-sizing: border-box; width: 100%; min-height: 84px; padding: 10px 12px; border-radius: var(--of-radius-md);
+  border: 1px solid var(--of-line-strong); font: var(--of-text-md)/19px var(--of-font-sans); color: var(--of-ink); white-space: pre-wrap;
+}
+.of-ai-prompt:focus { border-color: var(--of-accent); }
+.of-ai-prompt::placeholder { color: var(--of-muted); }
+.of-ai-row { display: flex; align-items: center; gap: 10px; min-height: 28px; }
+.of-ai-row > .lbl { width: 64px; flex-shrink: 0; color: var(--of-muted); font-size: var(--of-text-xs); }
+.of-ai-row > .of-field, .of-ai-row > .of-seg { flex: 1; }
+.of-ai-error { color: var(--of-danger); font-size: var(--of-text-xs); line-height: 16px; }
+.of-ai-empty { display: flex; flex-direction: column; gap: 8px; padding: 18px 24px 22px; }
+
+.of-prov-list { display: flex; flex-direction: column; border: 1px solid var(--of-hairline); border-radius: var(--of-radius-md); overflow: hidden; }
+.of-prov { border-bottom: 1px solid var(--of-hairline); }
+.of-prov:last-child { border-bottom: 0; }
+.of-prov-head { all: unset; box-sizing: border-box; width: 100%; display: flex; align-items: center; gap: 12px; padding: 10px 12px; cursor: default; }
+.of-prov-head:hover { background: var(--of-chrome); }
+.of-prov.open > .of-prov-head { background: var(--of-chrome); }
+.of-prov-tile {
+  width: 28px; height: 28px; border-radius: 7px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center;
+  background: var(--of-ink); color: var(--of-on-ink); font: 700 11px/1 var(--of-font-sans);
+}
+.of-prov-tile.claude { background: var(--of-claude); }
+.of-prov-head .names { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.of-prov-head .n1 { font: 600 var(--of-text-md)/16px var(--of-font-sans); color: var(--of-ink); }
+.of-prov-head .n2 { color: var(--of-muted); font-size: var(--of-text-xs); line-height: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.of-prov-tag { flex-shrink: 0; padding: 2px 6px; border-radius: 4px; background: var(--of-chrome); color: var(--of-ink-2); font: 500 10px/12px var(--of-font-sans); }
+.of-prov.open .of-prov-tag { background: var(--of-panel); }
+.of-prov-body { display: flex; flex-direction: column; gap: 10px; padding: 4px 12px 14px 52px; background: var(--of-chrome); }
+.of-prov-body .of-field { background: var(--of-panel); }
+.of-prov-body .of-ai-row > .lbl { width: 76px; }
+.of-prov-test { font-size: var(--of-text-xs); line-height: 16px; }
+.of-prov-add { display: flex; flex-wrap: wrap; gap: 6px; }
+.of-ai-defaults { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.of-ai-inspector-prompt {
+  all: unset; box-sizing: border-box; width: 100%; min-height: 60px; padding: 7px 8px;
+  background: var(--of-chrome); border: 1px solid var(--of-hairline); border-radius: var(--of-radius-sm);
+  font: var(--of-text-sm)/18px var(--of-font-sans); color: var(--of-ink); white-space: pre-wrap; resize: vertical;
+}
+.of-ai-inspector-prompt:focus { border-color: var(--of-accent); }

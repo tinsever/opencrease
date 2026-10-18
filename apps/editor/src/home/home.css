@@ -1,0 +1,31 @@
+.of-home { flex: 1; min-height: 0; display: flex; font: var(--of-text-sm)/16px var(--of-font-sans); color: var(--of-ink); overflow-wrap: anywhere; }
+.of-home-side { width: 232px; flex-shrink: 0; background: var(--of-chrome); border-right: 1px solid var(--of-hairline); display: flex; flex-direction: column; gap: 20px; padding: 16px 10px; min-height: 0; overflow-y: auto; }
+.of-home-brand { display: flex; align-items: center; gap: 10px; padding: 0 6px; font: 700 var(--of-text-lg)/18px var(--of-font-sans); letter-spacing: -0.02em; }
+.of-home-nav { display: flex; flex-direction: column; gap: 2px; }
+.of-home-item { all: unset; box-sizing: border-box; display: flex; align-items: center; gap: 10px; height: 30px; padding: 0 8px; border-radius: var(--of-radius-md); color: var(--of-ink-2); cursor: default; min-width: 0; }
+.of-home-item:hover { background: color-mix(in srgb, var(--of-panel) 60%, transparent); }
+.of-home-item.on { background: var(--of-panel); color: var(--of-ink); font-weight: 500; box-shadow: 0 0 0 1px var(--of-hairline); }
+.of-home-item .label { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.of-home-item .count { color: var(--of-muted); font: var(--of-text-xs)/14px var(--of-font-mono); }
+.of-home-agent { background: var(--of-panel); border-radius: var(--of-radius-lg); box-shadow: 0 0 0 1px var(--of-hairline); display: flex; flex-direction: column; gap: 10px; padding: 12px; }
+.of-home-main { flex: 1; min-width: 0; overflow-y: auto; padding: 28px 40px 40px; display: flex; flex-direction: column; gap: 24px; background: var(--of-panel); }
+.of-home-header { display: flex; align-items: flex-end; gap: 12px; }
+.of-home-title { font: 700 var(--of-text-2xl)/32px var(--of-font-sans); letter-spacing: -0.02em; }
+.of-home-search { display: flex; align-items: center; gap: 8px; height: 32px; width: 240px; padding: 0 10px; border-radius: var(--of-radius-md); background: var(--of-chrome); color: var(--of-muted); border: 1px solid transparent; }
+.of-home-search:focus-within { border-color: var(--of-accent); background: var(--of-panel); }
+.of-home-search input { all: unset; flex: 1; min-width: 0; color: var(--of-ink); font: var(--of-text-sm)/16px var(--of-font-sans); }
+.of-home-search input::placeholder { color: var(--of-muted); }
+.of-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; }
+.of-card-file { display: flex; flex-direction: column; gap: 8px; min-width: 0; cursor: default; user-select: none; }
+.of-card-thumb { aspect-ratio: 264 / 172; border-radius: var(--of-radius-lg); background: var(--of-canvas); overflow: hidden; position: relative; box-shadow: inset 0 0 0 1px #0000000a; display: flex; align-items: center; justify-content: center; }
+.of-card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.of-card-file:hover .of-card-thumb, .of-card-file:focus-visible .of-card-thumb { box-shadow: 0 0 0 2px var(--of-accent); }
+.of-card-file:focus-visible { outline: none; }
+.of-card-initial { width: 56%; height: 62%; background: var(--of-panel); border-radius: 4px; box-shadow: 0 1px 3px #0000001a; display: flex; align-items: center; justify-content: center; font: 600 40px/1 var(--of-font-sans); color: var(--of-line-strong); letter-spacing: -0.02em; }
+.of-card-meta { display: flex; align-items: flex-start; gap: 8px; min-width: 0; }
+.of-card-meta .text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.of-card-meta .name { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; }
+.of-card-meta .sub { color: var(--of-muted); font-size: var(--of-text-xs); line-height: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.of-card-new { aspect-ratio: 264 / 172; border-radius: var(--of-radius-lg); border: 1.5px dashed var(--of-line-strong); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: var(--of-ink-2); background: none; cursor: default; font: inherit; }
+.of-card-new:hover { border-color: var(--of-accent); color: var(--of-ink); }
+.of-card-star { color: var(--of-accent); }

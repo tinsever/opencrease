@@ -1,0 +1,30 @@
+{
+  "name": "opencrease-monorepo",
+  "license": "AGPL-3.0-or-later",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.28.0",
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "vitest run",
+    "typecheck": "pnpm -r typecheck",
+    "dev": "node scripts/dev.mjs",
+    "start": "node apps/server/bin/opencrease.mjs",
+    "test:visual": "tsx tests/visual/run.ts",
+    "test:visual:update": "tsx tests/visual/run.ts --update"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@types/pngjs": "^6.0.5",
+    "ajv": "^8.20.0",
+    "axe-core": "^4.14.0",
+    "esbuild": "^0.28.2",
+    "fast-check": "^4.10.2",
+    "pixelmatch": "^8.0.0",
+    "playwright": "^1.64.1",
+    "pngjs": "^7.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  }
+}

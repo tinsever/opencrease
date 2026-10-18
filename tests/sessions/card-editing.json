@@ -1,0 +1,157 @@
+{
+  "name": "card-editing",
+  "prompt": "Build a small product card, revise its title, and duplicate its call to action.",
+  "calls": [
+    {
+      "tool": "create_artboard",
+      "args": {
+        "name": "Product card",
+        "styles": {
+          "width": 360,
+          "height": 240,
+          "padding": 24,
+          "gap": 16
+        }
+      },
+      "bind": {
+        "board": "id"
+      }
+    },
+    {
+      "tool": "write_html",
+      "args": {
+        "targetNodeId": "$board",
+        "mode": "insert-children",
+        "html": "<div layer-name=\"Title\" style=\"font-size:28px;font-weight:700\">Paper sketch</div><div layer-name=\"CTA\" style=\"padding:12px;background:#ff5b14;color:#fff\">Get started</div>"
+      },
+      "bind": {
+        "title": "createdNodes.0.id",
+        "cta": "createdNodes.1.id"
+      }
+    },
+    {
+      "tool": "set_text_content",
+      "args": {
+        "updates": [
+          {
+            "nodeId": "$title",
+            "textContent": "OpenCrease sketch"
+          }
+        ]
+      }
+    },
+    {
+      "tool": "duplicate_nodes",
+      "args": {
+        "nodes": [
+          {
+            "id": "$cta"
+          }
+        ]
+      },
+      "bind": {
+        "copy": "duplicatedNodes.0.id"
+      }
+    },
+    {
+      "tool": "rename_nodes",
+      "args": {
+        "updates": [
+          {
+            "nodeId": "$copy",
+            "name": "Secondary CTA"
+          }
+        ]
+      }
+    },
+    {
+      "tool": "set_text_content",
+      "args": {
+        "updates": [
+          {
+            "nodeId": "$copy",
+            "textContent": "Learn more"
+          }
+        ]
+      }
+    },
+    {
+      "tool": "update_styles",
+      "args": {
+        "updates": [
+          {
+            "nodeIds": [
+              "$copy"
+            ],
+            "styles": {
+              "background": "#eee",
+              "color": "#222",
+              "padding": "8px"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "expected": {
+    "pages": [
+      {
+        "name": "Page 1",
+        "children": [
+          {
+            "type": "Frame",
+            "name": "Product card",
+            "styles": {
+              "backgroundColor": "#FFFFFF",
+              "display": "flex",
+              "flexDirection": "column",
+              "gap": 16,
+              "height": 240,
+              "left": 0,
+              "overflow": "clip",
+              "padding": 24,
+              "position": "absolute",
+              "top": 0,
+              "width": 360
+            },
+            "children": [
+              {
+                "type": "Text",
+                "name": "Title",
+                "styles": {
+                  "fontSize": "28px",
+                  "fontWeight": 700
+                },
+                "text": "OpenCrease sketch",
+                "children": []
+              },
+              {
+                "type": "Text",
+                "name": "CTA",
+                "styles": {
+                  "backgroundColor": "#ff5b14",
+                  "color": "#fff",
+                  "padding": "12px"
+                },
+                "text": "Get started",
+                "children": []
+              },
+              {
+                "type": "Text",
+                "name": "Secondary CTA",
+                "styles": {
+                  "backgroundColor": "#eee",
+                  "color": "#222",
+                  "padding": "8px"
+                },
+                "text": "Learn more",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "tokens": []
+  }
+}

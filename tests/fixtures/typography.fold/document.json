@@ -1,0 +1,137 @@
+{
+  "assets": {},
+  "clientId": "fixture",
+  "clock": 6,
+  "createdAt": 0,
+  "formatVersion": 1,
+  "id": "fixture-typography",
+  "name": "typography",
+  "nodes": {
+    "2-fixture": {
+      "children": [
+        "3-fixture",
+        "4-fixture",
+        "5-fixture",
+        "6-fixture"
+      ],
+      "exports": [
+        {
+          "format": "png",
+          "scale": "2x"
+        }
+      ],
+      "id": "2-fixture",
+      "locked": false,
+      "name": "Typography",
+      "parentId": "root_p-1-fixture",
+      "styles": {
+        "backgroundColor": "#171d21",
+        "display": "flex",
+        "flexDirection": "column",
+        "gap": "10px",
+        "height": "260px",
+        "left": 0,
+        "overflow": "hidden",
+        "padding": "24px",
+        "position": "absolute",
+        "top": 0,
+        "width": "400px"
+      },
+      "type": "Frame",
+      "visible": true
+    },
+    "3-fixture": {
+      "children": [],
+      "id": "3-fixture",
+      "locked": false,
+      "name": "TYPE AND COLOUR",
+      "parentId": "2-fixture",
+      "styles": {
+        "color": "#8ad7bf",
+        "fontFamily": "Geist Variable",
+        "fontSize": "11px",
+        "letterSpacing": "2px"
+      },
+      "text": "TYPE AND COLOUR",
+      "type": "Text",
+      "visible": true
+    },
+    "4-fixture": {
+      "children": [],
+      "id": "4-fixture",
+      "locked": false,
+      "name": "Design that stays editable.",
+      "parentId": "2-fixture",
+      "styles": {
+        "color": "#eff6f3",
+        "fontFamily": "Geist Variable",
+        "fontSize": "34px",
+        "fontWeight": 750,
+        "lineHeight": "38px"
+      },
+      "text": "Design that\nstays editable.",
+      "type": "Text",
+      "visible": true
+    },
+    "5-fixture": {
+      "children": [],
+      "id": "5-fixture",
+      "locked": false,
+      "name": "Größe, Weißraum & Rhythmus. HTML, SVG an",
+      "parentId": "2-fixture",
+      "styles": {
+        "color": "#acc3bb",
+        "fontFamily": "Geist Variable",
+        "fontSize": "14px",
+        "lineHeight": "20px",
+        "whiteSpace": "pre-wrap"
+      },
+      "text": "Größe, Weißraum & Rhythmus.\nHTML, SVG and embedded fonts.",
+      "type": "Text",
+      "visible": true
+    },
+    "6-fixture": {
+      "children": [],
+      "id": "6-fixture",
+      "locked": false,
+      "name": "--color-accent: #8ad7bf;",
+      "parentId": "2-fixture",
+      "styles": {
+        "color": "#8ad7bf",
+        "fontFamily": "Geist Mono Variable",
+        "fontSize": "12px"
+      },
+      "text": "--color-accent: #8ad7bf;",
+      "type": "Text",
+      "visible": true
+    },
+    "root_p-1-fixture": {
+      "children": [
+        "2-fixture"
+      ],
+      "id": "root_p-1-fixture",
+      "locked": false,
+      "name": "Root",
+      "parentId": null,
+      "styles": {},
+      "type": "Root",
+      "visible": true
+    }
+  },
+  "pageList": [
+    {
+      "id": "p-1-fixture",
+      "type": "page"
+    }
+  ],
+  "pages": {
+    "p-1-fixture": {
+      "icon": null,
+      "id": "p-1-fixture",
+      "name": "Page 1",
+      "rootId": "root_p-1-fixture"
+    }
+  },
+  "tokens": [],
+  "updatedAt": 0
+}

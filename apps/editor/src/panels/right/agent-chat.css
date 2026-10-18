@@ -1,0 +1,22 @@
+.of-agent-chat { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+.of-chat-toolbar { display: flex; align-items: center; gap: 4px; padding: 6px 10px; border-bottom: 1px solid var(--of-hairline); }
+.of-chat-view { all: unset; padding: 4px 8px; color: var(--of-muted); border-radius: 4px; cursor: pointer; font-size: var(--of-text-xs); }
+.of-chat-view.active { background: var(--of-chrome); color: var(--of-ink); font-weight: 600; }
+.of-chat-turn { display: flex; flex-direction: column; gap: 8px; padding: 4px 0 12px; border-bottom: 1px solid var(--of-hairline); }
+.of-chat-turn.user { background: var(--of-chrome); border: 0; padding: 10px; border-radius: var(--of-radius-md); }
+.of-chat-author { display: flex; align-items: center; gap: 6px; font-size: var(--of-text-xs); font-weight: 600; min-width: 0; }
+.of-chat-model { color: var(--of-muted); font-size: 10px; font-weight: 400; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.of-chat-text { white-space: pre-wrap; overflow-wrap: anywhere; font-size: var(--of-text-sm); line-height: 19px; }
+.of-chat-selection { font-size: 10px; color: var(--of-agent); }
+.of-chat-welcome { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 12px 0 16px; }
+.of-chat-welcome-title { font-size: var(--of-text-md); font-weight: 600; }
+.of-chat-working { display: flex; align-items: center; gap: 8px; color: var(--of-muted); font-size: var(--of-text-xs); }
+.of-chat-composer { margin-top: 0; }
+.of-chat-composer textarea { font: var(--of-text-sm)/18px var(--of-font-sans); min-height: 54px; resize: vertical; max-height: 180px; white-space: pre-wrap; }
+.of-chat-provider { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.of-chat-provider > .of-field { flex: 1; min-width: 0; }
+.of-chat-model-input { width: 100%; border: 0; background: transparent; color: var(--of-ink-2); font: var(--of-text-xs)/18px var(--of-font-sans); padding: 2px 0; outline-color: var(--of-accent); }
+.of-chat-send-row { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+.of-chat-send-row .of-hint { font-size: 10px; }
+.of-chat-setup, .of-chat-retry { all: unset; color: var(--of-accent-ink); cursor: pointer; font-size: var(--of-text-xs); }
+.of-chat-retry { display: block; margin-top: 4px; }

@@ -1,0 +1,63 @@
+diff --git a/build/webm-muxer.d.ts b/build/webm-muxer.d.ts
+index 1beea16403715f93955726f244307d38a30d4a9b..f70725da040aac3c44c2d1017d8c08bb5c6b920d 100644
+--- a/build/webm-muxer.d.ts
++++ b/build/webm-muxer.d.ts
+@@ -149,7 +149,7 @@ declare class Muxer<T extends Target> {
+ 	 * @param timestamp Optionally, the timestamp to use for the video chunk. When not provided, it will use the one
+ 	 * specified in `chunk`.
+ 	 */
+-	addVideoChunk(chunk: EncodedVideoChunk, meta?: EncodedVideoChunkMetadata, timestamp?: number): void;
++	addVideoChunk(chunk: EncodedVideoChunk, meta?: EncodedVideoChunkMetadata & { alphaSideData?: BufferSource }, timestamp?: number): void;
+ 	/**
+ 	 * Adds a new, encoded audio chunk to the WebM file.
+ 	 * @param chunk The encoded audio chunk. Can be obtained through an `AudioEncoder`.
+diff --git a/build/webm-muxer.js b/build/webm-muxer.js
+index 91999c1cc18d35d48c5816a46bf47a4da015eab5..a94bc2ed11ebd1e8065d4e456e469f9ac030088f 100644
+--- a/build/webm-muxer.js
++++ b/build/webm-muxer.js
+@@ -720,6 +720,11 @@ var WebMMuxer = (() => {
+       if (meta)
+         __privateMethod(this, _writeVideoDecoderConfig, writeVideoDecoderConfig_fn).call(this, meta);
+       let videoChunk = __privateMethod(this, _createInternalChunk, createInternalChunk_fn).call(this, data, type, timestamp, VIDEO_TRACK_NUMBER);
++    if (meta?.alphaSideData) {
++      // VP8/VP9 alpha: a second coded frame of the alpha plane in BlockAdditions (BlockAddID 1)
++      videoChunk.additions = [{ id: 166 /* BlockMore */, data: [{ id: 238 /* BlockAddID */, data: 1 }, { id: 165 /* BlockAdditional */, data: new Uint8Array(meta.alphaSideData) }] }];
++      if (type === "delta") videoChunk.referenceMs = Math.min(-1, Math.round((__privateGet(this, _lastVideoTimestamp) - videoChunk.timestamp) / 1e3));
++    }
+       if (__privateGet(this, _options).video.codec === "V_VP9")
+         __privateMethod(this, _fixVP9ColorSpace, fixVP9ColorSpace_fn).call(this, videoChunk);
+       __privateSet(this, _lastVideoTimestamp, videoChunk.timestamp);
+@@ -1275,7 +1280,8 @@ If you want to allow non-zero first timestamps, set firstTimestampBehavior: 'per
+           chunk.data
+         ] },
+         chunk.duration !== void 0 ? { id: 155 /* BlockDuration */, data: msDuration } : null,
+-        chunk.additions ? { id: 30113 /* BlockAdditions */, data: chunk.additions } : null
++        chunk.referenceMs !== void 0 ? { id: 251 /* ReferenceBlock */, data: new Uint8Array([(chunk.referenceMs >> 8) & 255, chunk.referenceMs & 255]) } : null,
++      chunk.additions ? { id: 30113 /* BlockAdditions */, data: chunk.additions } : null
+       ] };
+       __privateGet(this, _writer).writeEBML(blockGroup);
+     }
+diff --git a/build/webm-muxer.mjs b/build/webm-muxer.mjs
+index b74dc5b9dbe51720feb303a0e517f39b049c3c7a..ebbbe9274c4a0b87773a3c1f25ae4f62dfd19ec5 100644
+--- a/build/webm-muxer.mjs
++++ b/build/webm-muxer.mjs
+@@ -691,6 +691,11 @@ var Muxer = class {
+     if (meta)
+       __privateMethod(this, _writeVideoDecoderConfig, writeVideoDecoderConfig_fn).call(this, meta);
+     let videoChunk = __privateMethod(this, _createInternalChunk, createInternalChunk_fn).call(this, data, type, timestamp, VIDEO_TRACK_NUMBER);
++    if (meta?.alphaSideData) {
++      // VP8/VP9 alpha: a second coded frame of the alpha plane in BlockAdditions (BlockAddID 1)
++      videoChunk.additions = [{ id: 166 /* BlockMore */, data: [{ id: 238 /* BlockAddID */, data: 1 }, { id: 165 /* BlockAdditional */, data: new Uint8Array(meta.alphaSideData) }] }];
++      if (type === "delta") videoChunk.referenceMs = Math.min(-1, Math.round((__privateGet(this, _lastVideoTimestamp) - videoChunk.timestamp) / 1e3));
++    }
+     if (__privateGet(this, _options).video.codec === "V_VP9")
+       __privateMethod(this, _fixVP9ColorSpace, fixVP9ColorSpace_fn).call(this, videoChunk);
+     __privateSet(this, _lastVideoTimestamp, videoChunk.timestamp);
+@@ -1246,6 +1251,7 @@ writeBlock_fn = function(chunk, canCreateNewCluster) {
+         chunk.data
+       ] },
+       chunk.duration !== void 0 ? { id: 155 /* BlockDuration */, data: msDuration } : null,
++      chunk.referenceMs !== void 0 ? { id: 251 /* ReferenceBlock */, data: new Uint8Array([(chunk.referenceMs >> 8) & 255, chunk.referenceMs & 255]) } : null,
+       chunk.additions ? { id: 30113 /* BlockAdditions */, data: chunk.additions } : null
+     ] };
+     __privateGet(this, _writer).writeEBML(blockGroup);
